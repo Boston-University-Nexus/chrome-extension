@@ -1,5 +1,6 @@
 /* global chrome */
 var classesScraped = [];
+var buID;
 
 // Makes the program wait
 const sleep = (ms) => {
@@ -51,14 +52,16 @@ const scrapeClassesTaken = () => {
   );
 };
 
-const sendToServer = (classesScraped, buID) => {
+const sendToServer = (classesScraped) => {
   for (const i in classesScraped)
     classesScraped[i] = classesScraped[i].replace(" ", "");
 
   let data = {
     classes: classesScraped,
-    buID,
+    buID: buID,
   };
+
+  console.log(JSON.stringify(data));
 
   fetch("https://bunexusserver.com/api/saveUserClasses", {
     method: "POST",
@@ -109,5 +112,10 @@ async function scrapeDataSequence() {
 window.onload = () => {
   document.getElementById("clickIt").addEventListener("click", () => {
     scrapeDataSequence();
+
+    buID = document.getElementById("buidinput").value;
+
+    // document.getElementById("firstPage").style.display = "none";
+    // document.getElementById("loading").style.display = "flex";
   });
 };
