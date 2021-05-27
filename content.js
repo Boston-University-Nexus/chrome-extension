@@ -28,8 +28,19 @@ function runScript(){
 
 function scrape(){
     $.get(window.location.href, function(res){
-        console.log(res);
-        // console.log($x('/html/body/center/center/table[2]'));
+        // console.log(res);
+        var table_path = $('body > center > center > table:nth-child(23) > tbody')
+        var tr = table_path.find('tr:nth-child(6) > td:nth-child(6)')
+        console.log(tr.text());
+
     });
 }
+
+
+// document.querySelector("body > center > center > table:nth-child(23) > tbody")
+
+
+// document.querySelector("body > center > center > table:nth-child(23) > tbody > tr:nth-child(6) > td:nth-child(6) > text")
+
+
 
