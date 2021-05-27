@@ -2,10 +2,10 @@
     "name": "Nexus Chrome Extension", 
     "description": "Getting Student Data", 
     "version": "1.0", 
-    "manifest_version": 3, 
+    "manifest_version": 2, 
 
     "background":{
-        "service_worker": "background.js"
+        "scripts": ["background.js"]
     }, 
 
     "permissions":[
@@ -23,7 +23,7 @@
                 "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
                 "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*"
             ],
-            "js": ["background.js"]
+            "js": ["content.js"]
         }
     ]
 }
