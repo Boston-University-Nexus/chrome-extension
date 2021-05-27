@@ -28,13 +28,19 @@ const scrapeExtCredits = () => {
         let x = text.match(/([A-Z][A-Z][A-Z][A-Z][A-Z][0-9][0-9][0-9])+/g, "");
         let y = text.match(/([A-Z][A-Z][A-Z][A-Z][A-Z][0-9]\*\*)+/g, "");
 
-        classesScraped = classesScraped.concat(x).concat(y);
+        if (x) classesScraped = classesScraped.concat(x);
+        if (y) classesScraped = classesScraped.concat(y);
 
         document.getElementById("loading").style.display = "none";
         document.getElementById("confirmData").style.display = "flex";
-        let classesToHtml = classesScraped.join(",");
+
+        console.log(classesScraped);
+
+        for (const i in classesScraped)
+          classesScraped[i] = "<span>" + classesScraped[i] + "</span>";
+
+        let classesToHtml = classesScraped.join("");
         classesToHtml = classesToHtml.replace(/\s/g, "");
-        classesToHtml = classesToHtml.replace(/(\d+,)/g, "$1 ");
 
         document.getElementById("allClasses").innerHTML = classesToHtml;
         document.getElementById("savedBUID").innerHTML =
@@ -129,5 +135,16 @@ window.onload = () => {
 
     document.getElementById("firstPage").style.display = "none";
     document.getElementById("loading").style.display = "flex";
+  });
+
+  document.getElementById("BUID").addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.keyCode === 13) {
+      scrapeDataSequence();
+
+      buID = document.getElementById("buidinput").value;
+
+      document.getElementById("firstPage").style.display = "none";
+      document.getElementById("loading").style.display = "flex";
+    }
   });
 };

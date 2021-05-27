@@ -29,6 +29,7 @@
 .info {
   width: 66.66%;
   display: block;
+  font-size: 16px;
 }
 
 #BUID {
@@ -127,6 +128,7 @@
 #savedBUID span {
   width: 66.66%;
   color: rgb(0, 162, 255);
+  font-weight: bold;
 }
 
 #classesLabel {
@@ -134,12 +136,26 @@
   margin: 0;
   margin-bottom: 3px;
   color: rgb(0, 162, 255);
+  font-weight: bold;
 }
 
 #allClasses {
   width: 66.66%;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: hidden;
+  overflow-x: auto;
   max-height: 50%;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px 0;
+}
+
+#allClasses span {
+  padding: 2px 7px;
+  background-color: rgb(221, 221, 221);
+  border-radius: 5px;
+  width: 50%;
+  margin-right: 5px;
+  box-sizing: border-box;
 }
