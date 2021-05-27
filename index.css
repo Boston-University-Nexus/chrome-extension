@@ -1,0 +1,145 @@
+#popup {
+  height: 300px;
+  width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 16px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+#firstPage,
+#loading,
+#confirmData {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#loading,
+#confirmData {
+  display: none;
+}
+
+.info {
+  width: 66.66%;
+  display: block;
+}
+
+#BUID {
+  display: flex;
+  width: 66.66%;
+  align-items: center;
+  justify-content: start;
+  height: 40px;
+  background-color: rgb(235, 235, 235);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+#BUID span {
+  font-weight: bold;
+}
+
+#BUID input::-webkit-outer-spin-button,
+#BUID input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#BUID input[type="number"] {
+  -moz-appearance: textfield;
+  padding-right: 10px;
+  border: 0 none;
+  background: transparent;
+  font-size: 16px;
+  font-family: sans-serif;
+  width: 100%;
+}
+
+#BUID input:focus {
+  outline: 0 none;
+}
+
+#confirmButton,
+#clickIt {
+  width: 66.66%;
+  height: 40px;
+  border: 0 none;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+#confirmButton:hover,
+#clickIt:hover {
+  border: 2px solid rgb(0, 201, 84);
+  color: rgb(0, 201, 84);
+  font-weight: bold;
+  transition: border-color 100ms, color 100ms;
+}
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+#loading-spinner {
+  -webkit-animation: rotating 500ms linear infinite;
+  -moz-animation: rotating 500ms linear infinite;
+  -ms-animation: rotating 500ms linear infinite;
+  -o-animation: rotating 500ms linear infinite;
+  animation: rotating 500ms linear infinite;
+  border: 8px solid black;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+}
+
+#savedBUID {
+  width: 66.66%;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+#savedBUID span {
+  width: 66.66%;
+  color: rgb(0, 162, 255);
+}
+
+#classesLabel {
+  width: 66.66%;
+  margin: 0;
+  margin-bottom: 3px;
+  color: rgb(0, 162, 255);
+}
+
+#allClasses {
+  width: 66.66%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 50%;
+  margin-bottom: 10px;
+}
