@@ -18,7 +18,8 @@
     "content_scripts": [
         {
             "matches":[
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1622102987?ModuleName=xcred.pl"
+                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1622102987?ModuleName=xcred.pl",
+                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1622106623?ModuleName=xcred.pl"
             ],
             "js": ["jquery.js", "content.js"]
         }
