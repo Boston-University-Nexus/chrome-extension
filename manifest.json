@@ -2,5 +2,28 @@
     "name": "Nexus Chrome Extension", 
     "description": "Getting Student Data", 
     "version": "1.0", 
-    "manifest_version": 3
+    "manifest_version": 3, 
+
+    "background":{
+        "service_worker": "background.js"
+    }, 
+
+    "permissions":[
+        "http://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "https://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*"
+    ], 
+
+    "content_scripts": [
+        {
+            "matches":[
+                "http://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+                "https://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+                "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
+                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*"
+            ],
+            "js": ["background.js"]
+        }
+    ]
 }
