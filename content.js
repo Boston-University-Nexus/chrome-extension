@@ -28,6 +28,20 @@ const scrapeExtCredits = () => {
         let x = text.match(/([A-Z][A-Z][A-Z][A-Z][A-Z][0-9][0-9][0-9])+/g, "");
 
         classesScraped = classesScraped.concat(x);
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("confirmData").style.display = "flex";
+        let classesToHtml = classesScraped.join(",");
+        classesToHtml = classesToHtml.replace(/\s/g, "");
+        classesToHtml = classesToHtml.replace(/(\d+,)/g, "$1 ");
+
+        document.getElementById("allClasses").innerHTML = classesToHtml;
+        document.getElementById("savedBUID").innerHTML =
+          "<span>BU ID: </span>U" + buID;
+
+        document
+          .getElementById("confirmButton")
+          .addEventListener("click", () => sendToServer());
       });
     }
   );
@@ -102,9 +116,6 @@ async function scrapeDataSequence() {
     );
     await sleep(3000);
     scrapeExtCredits();
-
-    await sleep(1000);
-    sendToServer(classesScraped);
   });
 }
 
@@ -115,7 +126,7 @@ window.onload = () => {
 
     buID = document.getElementById("buidinput").value;
 
-    // document.getElementById("firstPage").style.display = "none";
-    // document.getElementById("loading").style.display = "flex";
+    document.getElementById("firstPage").style.display = "none";
+    document.getElementById("loading").style.display = "flex";
   });
 };
