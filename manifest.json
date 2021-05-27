@@ -4,6 +4,10 @@
     "version": "1.0", 
     "manifest_version": 2, 
 
+    "brower_action":{
+        "default_popup": "popup.html"
+    },
+
     "background":{
         "scripts": ["background.js"]
     }, 
@@ -12,14 +16,17 @@
         "http://bu.edu/link/bin/uiscgi_studentlink.pl/*",
         "https://bu.edu/link/bin/uiscgi_studentlink.pl/*",
         "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
-        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*"
+        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "activeTab"
     ], 
 
     "content_scripts": [
         {
             "matches":[
                 "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1622102987?ModuleName=xcred.pl",
-                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1622106623?ModuleName=xcred.pl"
+                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1622106623?ModuleName=xcred.pl",
+                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1622103203?ModuleName=allgpa.pl",
+                "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1622110337?ModuleName=allgpa.pl"
             ],
             "js": ["jquery.js", "content.js"]
         }

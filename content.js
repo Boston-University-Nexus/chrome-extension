@@ -3,7 +3,18 @@ window.onload = function(){
 
 
     // Checking if JQuery has loaded -- returns function is loaded else undefined
-    checkForJQuery();
+    // checkForJQuery();
+    // runScript();
+
+
+    console.log(window.location.href);
+    if (window.location.href.includes("allgpa")){
+        console.log("This is the Classes Website");
+    } else if (window.location.href.includes("xcred")){
+        console.log("This is the external credit page");
+    } else{
+        console.log("On BU Page but not correct one");
+    }
     runScript();
 }
 
@@ -19,8 +30,11 @@ function checkForJQuery() {
 // Runs script after JQuery has been loaded 
 function runScript(){
     if (window.$){
-        scrape_Ext_Credits();
-        scrape_Classes_Taken();
+        if (window.location.href.includes("allgpa")){
+            scrape_Classes_Taken();
+        } else if (window.location.href.includes("xcred")){
+            scrape_Ext_Credits();
+        } // ADD ELSE CONDITION
     } else {
         window.setTimeout(runScript, 100);
     }
