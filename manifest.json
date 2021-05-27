@@ -1,31 +1,26 @@
 {
-    "name": "Nexus Chrome Extension", 
-    "description": "Getting Student Data", 
-    "version": "1.0", 
-    "manifest_version": 2, 
-
-    "brower_action":{
-        "default_popup": "popup.html"
-    },
-
-    "background":{
-        "scripts": ["background.js"]
-    }, 
-
-    "permissions":[
-        "http://bu.edu/link/bin/uiscgi_studentlink.pl/*",
-        "https://bu.edu/link/bin/uiscgi_studentlink.pl/*",
-        "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
-        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
-        "activeTab"
-    ], 
-
-    "content_scripts": [
-        {
-            "matches":[
-                "http://bu.edu/link/bin/uiscgi_studentlink.pl/*" 
-            ],
-            "js": ["jquery.js", "content.js"]
-        }
-    ]
+  "name": "Nexus Chrome Extension",
+  "description": "Getting Student Data",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "http://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "https://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "activeTab",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://bu.edu/link/bin/uiscgi_studentlink.pl/*"],
+      "js": ["content.js"]
+    }
+  ]
 }
