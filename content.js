@@ -26,8 +26,9 @@ const scrapeExtCredits = () => {
         let text = result[0];
 
         let x = text.match(/([A-Z][A-Z][A-Z][A-Z][A-Z][0-9][0-9][0-9])+/g, "");
+        let y = text.match(/([A-Z][A-Z][A-Z][A-Z][A-Z][0-9]\*\*)+/g, "");
 
-        classesScraped = classesScraped.concat(x);
+        classesScraped = classesScraped.concat(x).concat(y);
 
         document.getElementById("loading").style.display = "none";
         document.getElementById("confirmData").style.display = "flex";
