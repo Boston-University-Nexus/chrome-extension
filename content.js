@@ -5,7 +5,6 @@ window.onload = function(){
     // Checking if JQuery has loaded -- returns function is loaded else undefined
     checkForJQuery();
     runScript();
-    checkForJQuery();
 }
 
 function checkForJQuery() {
@@ -17,16 +16,19 @@ function checkForJQuery() {
     }    
 }
 
+// Runs script after JQuery has been loaded 
 function runScript(){
     if (window.$){
-        scrape();
+        scrape_Ext_Credits();
+        scrape_Classes_Taken();
     } else {
         window.setTimeout(runScript, 100);
     }
 }
 
 
-function scrape(){
+// Scrapes external credits 
+function scrape_Ext_Credits(){
     $.get(window.location.href, function(res){
         // console.log(res);
         var table_path = $('body > center > center > table:nth-child(23) > tbody');
@@ -43,20 +45,23 @@ function scrape(){
             }
         }
 
-
-
-        // var tr = table_path.find('tr:nth-child(6) > td:nth-child(6)')
-        // console.log(tr.text());
-
     });
 }
 
+// Scrapes classes taken 
+function scrape_Classes_Taken(){
+    $.get(window.location.href, function(res){
+        // console.log(res);
+        var table_path = $('body > table:nth-child(5) > tbody');
+        var num_rows = $('body > table:nth-child(5) > tbody tr').length;
+        console.log("Num rows of Classes taken: " + num_rows);
 
-// document.querySelector("body > center > center > table:nth-child(23) > tbody")
+        for (var i = 0; i < num_rows; i++){
+            var tr = table_path.find('tr:nth-child('+i.toString()+')')
+            var exact  = tr.find("td:nth-child(2)")
+            console.log(exact.text());
+        }
+    });
+}
 
-
-// document.querySelector("body > center > center > table:nth-child(23) > tbody > tr:nth-child(6) > td:nth-child(6) > text")
-
-document.querySelector("body > center > center > table:nth-child(23) > tbody > tr:nth-child(6) > td:nth-child(7)")
-document.querySelector("body > center > center > table:nth-child(23) > tbody > tr:nth-child(6)")
 
