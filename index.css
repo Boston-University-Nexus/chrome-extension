@@ -1,3 +1,9 @@
+* {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 #popup {
   height: 300px;
   width: 450px;
@@ -8,84 +14,6 @@
   font-size: 16px;
   font-family: sans-serif;
   box-sizing: border-box;
-}
-
-#firstPage,
-#loading,
-#confirmData {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-#loading,
-#confirmData {
-  display: none;
-}
-
-.info {
-  width: 66.66%;
-  display: block;
-  font-size: 16px;
-}
-
-#BUID {
-  display: flex;
-  width: 66.66%;
-  align-items: center;
-  justify-content: start;
-  height: 40px;
-  background-color: rgb(235, 235, 235);
-  margin-bottom: 20px;
-  border-radius: 5px;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-#BUID span {
-  font-weight: bold;
-}
-
-#BUID input::-webkit-outer-spin-button,
-#BUID input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-#BUID input[type="number"] {
-  -moz-appearance: textfield;
-  padding-right: 10px;
-  border: 0 none;
-  background: transparent;
-  font-size: 16px;
-  font-family: sans-serif;
-  width: 100%;
-}
-
-#BUID input:focus {
-  outline: 0 none;
-}
-
-#confirmButton,
-#clickIt {
-  width: 66.66%;
-  height: 40px;
-  border: 0 none;
-  cursor: pointer;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: transparent;
-}
-
-#confirmButton:hover,
-#clickIt:hover {
-  border: 2px solid rgb(0, 201, 84);
-  color: rgb(0, 201, 84);
-  font-weight: bold;
-  transition: border-color 100ms, color 100ms;
 }
 
 @keyframes rotating {
@@ -111,51 +39,10 @@
   -ms-animation: rotating 500ms linear infinite;
   -o-animation: rotating 500ms linear infinite;
   animation: rotating 500ms linear infinite;
-  border: 8px solid black;
+  border: 6px solid black;
   border-top-color: transparent;
   border-bottom-color: transparent;
   border-radius: 100%;
   width: 50px;
   height: 50px;
-}
-
-#savedBUID {
-  width: 66.66%;
-  margin: 0;
-  margin-bottom: 10px;
-}
-
-#savedBUID span {
-  width: 66.66%;
-  color: rgb(0, 162, 255);
-  font-weight: bold;
-}
-
-#classesLabel {
-  width: 66.66%;
-  margin: 0;
-  margin-bottom: 3px;
-  color: rgb(0, 162, 255);
-  font-weight: bold;
-}
-
-#allClasses {
-  width: 66.66%;
-  overflow-y: hidden;
-  overflow-x: auto;
-  max-height: 50%;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  padding: 5px 0;
-}
-
-#allClasses span {
-  padding: 2px 7px;
-  background-color: rgb(221, 221, 221);
-  border-radius: 5px;
-  width: 50%;
-  margin-right: 5px;
-  box-sizing: border-box;
 }

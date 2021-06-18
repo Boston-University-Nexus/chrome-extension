@@ -2,6 +2,8 @@
 var classesScraped = [];
 var buID;
 
+var wait_time = 3000;
+
 // Makes the program wait
 const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -12,6 +14,12 @@ const redirect = (to) => {
   chrome.tabs.getSelected(null, function (tab) {
     chrome.tabs.update(tab.id, { url: to });
   });
+};
+
+// Validates the BU ID
+const validateBUID = (id) => {
+  id_str = id.toString();
+  return id_str.length === 8;
 };
 
 // Scrapes external credits
@@ -34,17 +42,19 @@ const scrapeExtCredits = () => {
         document.getElementById("loading").style.display = "none";
         document.getElementById("confirmData").style.display = "flex";
 
-        console.log(classesScraped);
-
-        for (const i in classesScraped)
-          classesScraped[i] = "<span>" + classesScraped[i] + "</span>";
+        for (const i in classesScraped) {
+          classesScraped[i] = classesScraped[i].replace(/\s/g, "");
+          classesScraped[i] =
+            "<span class='py-px px-2 bg-gray-200 rounded mr-2 text-sm'>" +
+            classesScraped[i] +
+            "</span>";
+        }
 
         let classesToHtml = classesScraped.join("");
-        classesToHtml = classesToHtml.replace(/\s/g, "");
 
         document.getElementById("allClasses").innerHTML = classesToHtml;
         document.getElementById("savedBUID").innerHTML =
-          "<span>BU ID: </span>U" + buID;
+          "<span class='w-2/3 text-blue-500 font-bold'>BU ID: </span>U" + buID;
 
         document
           .getElementById("confirmButton")
@@ -113,7 +123,7 @@ async function scrapeDataSequence() {
         privateId +
         "?ModuleName=allgpa.pl"
     );
-    await sleep(3000);
+    await sleep(wait_time);
     scrapeClassesTaken();
 
     redirect(
@@ -121,7 +131,7 @@ async function scrapeDataSequence() {
         privateId +
         "?ModuleName=xcred.pl"
     );
-    await sleep(3000);
+    await sleep(wait_time);
     scrapeExtCredits();
   });
 }
@@ -129,22 +139,41 @@ async function scrapeDataSequence() {
 // Detects user click
 window.onload = () => {
   document.getElementById("clickIt").addEventListener("click", () => {
-    scrapeDataSequence();
-
     buID = document.getElementById("buidinput").value;
 
-    document.getElementById("firstPage").style.display = "none";
-    document.getElementById("loading").style.display = "flex";
-  });
-
-  document.getElementById("BUID").addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.keyCode === 13) {
+    if (validateBUID(buID)) {
       scrapeDataSequence();
-
-      buID = document.getElementById("buidinput").value;
 
       document.getElementById("firstPage").style.display = "none";
       document.getElementById("loading").style.display = "flex";
+    } else {
+      document.getElementById("wrongBUID").style.display = "block";
     }
+  });
+
+  document.getElementById("BUID").addEventListener("keydown", (e) => {
+    buID = document.getElementById("buidinput").value;
+
+    if (e.key === "Enter" || e.keyCode === 13) {
+      if (validateBUID(buID)) {
+        scrapeDataSequence();
+
+        document.getElementById("firstPage").style.display = "none";
+        document.getElementById("loading").style.display = "flex";
+      } else {
+        document.getElementById("wrongBUID").style.display = "block";
+      }
+    }
+  });
+
+  // Retry button
+  document.getElementById("retry").addEventListener("click", () => {
+    wait_time += 1500;
+    classesScraped = [];
+    scrapeDataSequence();
+
+    document.getElementById("firstPage").style.display = "none";
+    document.getElementById("confirmData").style.display = "none";
+    document.getElementById("loading").style.display = "flex";
   });
 };
